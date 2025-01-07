@@ -1,4 +1,6 @@
 package mk.ukim.finki.wp.kol2024g1.repository;
 
-public interface ReservationRepository {
+import mk.ukim.finki.wp.kol2024g1.model.Reservation;
+
+public interface ReservationRepository extends JpaSpecificationRepository<Reservation, Long> {
 }

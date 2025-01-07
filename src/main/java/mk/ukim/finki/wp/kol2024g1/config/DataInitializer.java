@@ -1,11 +1,14 @@
 package mk.ukim.finki.wp.kol2024g1.config;
 
+import jakarta.annotation.PostConstruct;
 import mk.ukim.finki.wp.kol2024g1.model.RoomType;
 import mk.ukim.finki.wp.kol2024g1.service.HotelService;
 import mk.ukim.finki.wp.kol2024g1.service.ReservationService;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
+@Component
 public class DataInitializer {
 
     private final HotelService hotelService;
@@ -22,6 +25,7 @@ public class DataInitializer {
         return RoomType.DOUBLE;
     }
 
+    @PostConstruct
     public void initData() {
         for (int i = 1; i < 6; i++) {
             this.hotelService.create("Hotel: " + i);

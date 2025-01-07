@@ -16,6 +16,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
@@ -63,7 +64,7 @@ public class SeleniumScenarioTest {
 
     @Order(2)
     @Test
-    public void test_pagination10pt() {
+    public void test_pagination_10pt() {
         SubmissionHelper.startTest("test-pagination-10");
         int pageSize = 5;
         int pageNum = 1;
@@ -171,6 +172,7 @@ public class SeleniumScenarioTest {
 
     @Order(6)
     @Test
+    @WithMockUser(username = "admin", roles = {"ADMIN", "USER"})
     public void test_create_mvc_10pt() throws Exception {
         SubmissionHelper.startTest("test-create-mvc-10");
         List<Hotel> hotels = this.hotelService.listAll();
@@ -241,6 +243,7 @@ public class SeleniumScenarioTest {
 
     @Order(8)
     @Test
+    @WithMockUser(username = "admin", roles = {"ADMIN", "USER"})
     public void test_edit_mvc_10pt() throws Exception {
         SubmissionHelper.startTest("test-edit-mvc-10");
         List<Hotel> hotels = this.hotelService.listAll();
@@ -309,6 +312,7 @@ public class SeleniumScenarioTest {
 
     @Order(10)
     @Test
+    @WithMockUser(username = "admin", roles = {"ADMIN", "USER"})
     public void test_delete_mvc_2pt() throws Exception {
         SubmissionHelper.startTest("test-delete-mvc-2");
         List<Reservation> items = this.reservationService.listAll();
@@ -422,6 +426,7 @@ public class SeleniumScenarioTest {
 
     @Order(14)
     @Test
+    @WithMockUser(username = "admin", roles = {"ADMIN", "USER"})
     public void test_extend_mvc_2pt() throws Exception {
         SubmissionHelper.startTest("test-extend-mvc-2");
         List<Reservation> reservations = this.reservationService.listAll();
